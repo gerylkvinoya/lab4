@@ -36,30 +36,39 @@ public abstract class PhotoFilter {
     * @param inPixel is a 32 bit pixel that contains RGB color values
     * @return a new Pixel in which unchanged color components
     */
-    protected int transformPixel (int inPixel){
-        return inPixel;
+    protected int transformPixel (int p0, int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8){
+        return p4;
     }
 
     /*
-    * apply This method visits every pixel in the input image. It applies a
-    * transform to each pixel.
-    *
-    * @param inBmp is the original image
-    * @return a new image in which each pixel has been transformed
-    */
+     * apply This method visits every pixel in the input image. It applies a
+     * transform to each pixel.
+     *
+     * @param inBmp is the original image
+     * @return a new image in which each pixel has been transformed
+     */
     public Bitmap apply(Bitmap inBmp) {
         int width = inBmp.getWidth();
         int height = inBmp.getHeight();
 
         Bitmap newBmp = Bitmap.createBitmap(width, height, inBmp.getConfig());
+        for (int w = 1; w < width - 1; w++) {
+            for (int h = 1; h < height - 1; h++) {
 
-        for (int w = 0; w < width; w++) {
-            for (int h = 0; h < height; h++) {
-                int inPixel = inBmp.getPixel(w,h);
-                int outPixel = transformPixel(inPixel);
+                int p0 = inBmp.getPixel(w -1,h -1);
+                int p1 = inBmp.getPixel(w,h - 1);
+                int p2 = inBmp.getPixel(w  +1,h - 1);
+                int p3 = inBmp.getPixel(w -1,h);
+                int p4 = inBmp.getPixel(w,h);
+                int p5 = inBmp.getPixel(w + 1,h);
+                int p6 = inBmp.getPixel(w - 1,h + 1);
+                int p7 = inBmp.getPixel(w,h + 1);
+                int p8 = inBmp.getPixel(w  + 1,h + 1);
+                int outPixel = transformPixel(p0, p1, p2, p3, p4, p5, p6, p7, p8);
                 newBmp.setPixel(w, h, outPixel);
             }
         }
         return newBmp;
     }
+
 }
