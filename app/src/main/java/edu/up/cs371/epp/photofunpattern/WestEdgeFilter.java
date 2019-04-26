@@ -3,7 +3,7 @@ package edu.up.cs371.epp.photofunpattern;
 import android.graphics.Color;
 
 /**
- *  class BrightFilter changes the image manipulation behavior of its parent
+ *  class WestEdgeFilter changes the image manipulation behavior of its parent
  *  PhotoFilter to increase an image brightness by value of 100.
  *
  *  @author Edward C. Epp
@@ -11,7 +11,7 @@ import android.graphics.Color;
  *  https://github.com/edcepp/PhotoFunPattern
  */
 
-public class BrightnessFilter extends PhotoFilter {
+public class WestEdgeFilter extends PhotoFilter {
 
     /*
     * tranformPixel This method overrides the transformPixel in the parent
