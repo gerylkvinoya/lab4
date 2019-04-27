@@ -98,10 +98,10 @@ public class PhotoFun extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_fun);
 
-        ImageView originalImageView =
+        myOriginalView =
                 (ImageView) findViewById(R.id.originalImage);
         BitmapDrawable originalDrawableBmp =
-                (BitmapDrawable) originalImageView.getDrawable();
+                (BitmapDrawable) myOriginalView.getDrawable();
         myOriginalBmp = originalDrawableBmp.getBitmap();
 
         myNewImageView = (ImageView) findViewById(R.id.newImage);
@@ -113,6 +113,9 @@ public class PhotoFun extends AppCompatActivity {
                 (Button) findViewById(R.id.westEdgeFilterButton);
         WestEdgeFilterButton.setOnClickListener
                 (new westEdgeFilterButtonListener());
+
+        initSpinner();
+        initImageArray();
     }
 
     /*
